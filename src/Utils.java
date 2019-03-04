@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Utils {
@@ -21,11 +22,31 @@ public class Utils {
     }
 
     public static ArrayList<ElectionResult> parseElection2016Results(String data) {
-//        ArrayList<ElectionResult> results = new ArrayList<>();
-//
-//        String[] dataArr = splitData(data);
-//
-//        for (int i = 11; i < data.length())
+        ArrayList<ElectionResult> results = new ArrayList<>();
+
+        String[] dataArr = splitData(data);
+
+        for (int i = 11; i < dataArr.length; i += 11) {
+            double demVotes = Double.parseDouble(dataArr[i]);
+            double gopVotes = Double.parseDouble(dataArr[i + 1]);
+            double totalVotes = Double.parseDouble(dataArr[i + 2]);
+            double perDem = Double.parseDouble(dataArr[i + 3]);
+            double perGop = Double.parseDouble(dataArr[i + 4]);
+            double diff = Double.parseDouble(dataArr[i + 5]);
+
+            System.out.println(dataArr[i + 6]);
+
+            double perPointDiff = Double.parseDouble(dataArr[i + 6]);
+            String stateAbrv = dataArr[i + 7];
+            String county = dataArr[i + 8];
+            int combinedFips = Integer.parseInt(dataArr[i + 9]);
+
+            ElectionResult result = new ElectionResult(demVotes, gopVotes, totalVotes, perDem, perGop, diff, perPointDiff, stateAbrv, county, combinedFips);
+
+            results.add(result);
+        }
+
+        return results;
     }
 
     private static String[] splitData(String data) {
@@ -52,6 +73,8 @@ public class Utils {
                 data = data.substring(0, i) + data.substring(i + 1);
             }
         }
+
+        //System.out.println(data);
 
         return data.split(",");
     }
