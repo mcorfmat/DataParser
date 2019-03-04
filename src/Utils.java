@@ -26,16 +26,13 @@ public class Utils {
 
         String[] dataArr = splitData(data);
 
-        for (int i = 11; i < dataArr.length; i += 11) {
+        for (int i = 12; i < dataArr.length; i += 11) {
             double demVotes = Double.parseDouble(dataArr[i]);
             double gopVotes = Double.parseDouble(dataArr[i + 1]);
             double totalVotes = Double.parseDouble(dataArr[i + 2]);
             double perDem = Double.parseDouble(dataArr[i + 3]);
             double perGop = Double.parseDouble(dataArr[i + 4]);
             double diff = Double.parseDouble(dataArr[i + 5]);
-
-            System.out.println(dataArr[i + 6]);
-
             double perPointDiff = Double.parseDouble(dataArr[i + 6]);
             String stateAbrv = dataArr[i + 7];
             String county = dataArr[i + 8];
@@ -65,6 +62,9 @@ public class Utils {
             }
             if (data.substring(i, i + 1).equals("%")) {
                 data = data.substring(0, i) + data.substring(i + 1);
+            }
+            if (data.substring(i, i + 1).equals("\n")) {
+                data = data.substring(0, i) + "," + data.substring(i + 1);
             }
         }
 
