@@ -1,7 +1,7 @@
 public class ElectionResult {
-    double demVotes, gopVotes, totalVotes, perDem, perGop, diff, perPointDiff;
-    String stateAbrv, county;
-    int combinedFips;
+    private double demVotes, gopVotes, totalVotes, perDem, perGop, diff, perPointDiff;
+    private String stateAbrv, county;
+    private int combinedFips;
 
     public ElectionResult(double demVotes, double gopVotes, double totalVotes, double perDem, double perGop, double diff, double perPointDiff, String stateAbrv, String county, int combinedFips){
         this.demVotes = demVotes;

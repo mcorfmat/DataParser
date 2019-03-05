@@ -5,6 +5,9 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Utils {
+    private static final int START_INDEX = 12;
+    private static final int INDECES_PER_OBJECT = 11;
+
     public static String readFileAsString(String filepath) {
         StringBuilder output = new StringBuilder();
 
@@ -26,7 +29,7 @@ public class Utils {
 
         String[] dataArr = splitData(data);
 
-        for (int i = 12; i < dataArr.length; i += 11) {
+        for (int i = START_INDEX; i < dataArr.length; i += INDECES_PER_OBJECT) {
             double demVotes = Double.parseDouble(dataArr[i]);
             double gopVotes = Double.parseDouble(dataArr[i + 1]);
             double totalVotes = Double.parseDouble(dataArr[i + 2]);
