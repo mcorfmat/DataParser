@@ -3,6 +3,7 @@ public class Education2016 {
     private double onlyHighSchool;
     private double someCollege;
     private double bachelorsOrMore;
+    private String data = Utils.readFileAsString("data/Education.csv");
 
     public Education2016(double noHighSchool, double onlyHighSchool, double someCollege, double bachelorsOrMore){
         this.noHighSchool = noHighSchool;

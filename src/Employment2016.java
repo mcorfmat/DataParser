@@ -3,6 +3,7 @@ public class Employment2016 {
     private int emplyedLaborForce;
     private int unemployedLaborForce;
     private double unemployedPercent;
+    private String data = Utils.readFileAsString("data/Unemployment.csv");
 
     public Employment2016(int totalLaborForce, int emplyedLaborForce, int unemployedLaborForce, double unemployedPercent){
         this.totalLaborForce = totalLaborForce;
@@ -42,4 +43,6 @@ public class Employment2016 {
     public void setUnemployedPercent(double unemployedPercent) {
         this.unemployedPercent = unemployedPercent;
     }
+
+
 }
