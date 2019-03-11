@@ -21,5 +21,7 @@ public class Main {
         ArrayList<String> names = Utils.getCountyNames();
 
         ArrayList<County> counties = Utils.sortResultsCounty(names, fips, resultElection, resultEducation, resultEmployment);
+
+        ArrayList<State> states = Utils.setStates(counties);
     }
 }

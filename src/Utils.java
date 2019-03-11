@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.spi.AbstractResourceBundleProvider;
 
 public class Utils {
     private static final int START_INDEX = 12;
@@ -170,6 +171,18 @@ public class Utils {
         return results;
     }
 
+    public static ArrayList<String> getStateNames() {
+        ArrayList<String> results = new ArrayList<>();
+        String data = Utils.readFileAsString("\"data/Unemployment.csv\"");
+
+        String[] dataArr = splitData(data);
+
+        for (int i = 1; i < dataArr.length; i += INDECES_PER_OBJECT_EMPLOYMENT) {
+            results.add(dataArr[i]);
+        }
+        return results;
+    }
+
 
     public static ArrayList<County> sortResultsCounty(ArrayList<String> names, ArrayList<Integer> fips, ArrayList<Election2016> resultElection, ArrayList<Education2016> resultEducation, ArrayList<Employment2016> resultEmployment) {
         ArrayList<County> counties = new ArrayList<>();
@@ -181,5 +194,16 @@ public class Utils {
         }
 
         return counties;
+    }
+
+    public static ArrayList<State> setStates(ArrayList<County> counties) {
+        ArrayList<String> stateNames = Utils.getStateNames();
+        ArrayList<State> states = new ArrayList<>();
+
+        for(int i = 0; i < stateNames.size(); i++) {
+            State state = new State(stateNames.get(i), counties);
+        }
+
+        return states;
     }
 }
