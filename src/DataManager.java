@@ -10,8 +10,4 @@ public class DataManager {
     public void setStates(ArrayList<State> states) {
         this.states = states;
     }
-
-    public DataManager(ArrayList<State> states){
-        this.states = states;
-    }
 }

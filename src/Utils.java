@@ -143,7 +143,6 @@ public class Utils {
 
             results.add(result);
         }
-
         return results;
     }
 
