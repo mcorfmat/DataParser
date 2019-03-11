@@ -202,6 +202,8 @@ public class Utils {
 
         for(int i = 0; i < stateNames.size(); i++) {
             State state = new State(stateNames.get(i), counties);
+
+            //TO DO: Counties by state?
         }
 
         return states;
