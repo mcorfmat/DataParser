@@ -146,6 +146,40 @@ public class Utils {
         return results;
     }
 
+    public static ArrayList<String> getCountyNames() {
+        ArrayList<String> results = new ArrayList<>();
+        String data = Utils.readFileAsString("\"data/Unemployment.csv\"");
+
+        String[] dataArr = splitData(data);
+
+        for (int i = 2; i < dataArr.length; i += INDECES_PER_OBJECT_EMPLOYMENT) {
+            results.add(dataArr[i]);
+        }
+        return results;
+    }
+
+    public static ArrayList<Integer> getFips() {
+        ArrayList<Integer> results = new ArrayList<>();
+        String data = Utils.readFileAsString("\"data/Unemployment.csv\"");
+
+        String[] dataArr = splitData(data);
+
+        for (int i = 0; i < dataArr.length; i += INDECES_PER_OBJECT_EMPLOYMENT) {
+            results.add(Integer.parseInt(dataArr[i]));
+        }
+        return results;
+    }
 
 
+    public static ArrayList<County> sortResultsCounty(ArrayList<String> names, ArrayList<Integer> fips, ArrayList<Election2016> resultElection, ArrayList<Education2016> resultEducation, ArrayList<Employment2016> resultEmployment) {
+        ArrayList<County> counties = new ArrayList<>();
+
+        for(int i = 0; i < resultEducation.size(); i++) {
+            County county = new County(names.get(i), fips.get(i), resultElection.get(i), resultEducation.get(i), resultEmployment.get(i));
+
+            counties.add(county);
+        }
+
+        return counties;
+    }
 }
